@@ -25,6 +25,11 @@ Ir para a pasta src, e então executar o docker build para geração da imagem, 
 ### Observação do inicio do cluster
 Executar kubectl apply -f k8s/
 
+### Acesso dos 2 programas
+Na hora de criar o cluster k3d, você tem q dar 2 port binding, como mostrado abaixo:
+k3d cluster create meucluster -p "8080:30000" -p "80:31000"
+Onde o localhost:8080 acessa o rotten-potatoes e o localhost acessa o mongo-express
+
 # Project rotten-potatoes
 
 ### About the project
@@ -38,3 +43,8 @@ Go to src folder, then execute docker build to generate the image, then changes 
 
 ### Cluster initialize Observation
 Execute kubectl apply -f k8s/
+
+### Access both programs
+Before create the cluster k3d, You have to port binding both of them, as shown next:
+k3d cluster create meucluster -p "8080:30000" -p "80:31000"
+localhost:8080 access rotten-potatoes and localhost access mongo-express
