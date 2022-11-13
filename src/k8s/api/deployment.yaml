@@ -46,3 +46,15 @@ spec:
               secretKeyRef:
                 key: MONGO_INITDB_ROOT_PASSWORD
                 name: mongodb-secret
+      affinity:
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - "mongodb"
