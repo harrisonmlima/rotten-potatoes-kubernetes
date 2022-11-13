@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: harrisonlima/rotten-potatoes:v1
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          periodSeconds: 10
+          initialDelaySeconds: 3
+          failureThreshold: 3
+          successThreshold: 1
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 5000
+          periodSeconds: 10
+          initialDelaySeconds: 3
+          failureThreshold: 5
+          successThreshold: 1
+        ports:
+        - containerPort: 5000
+        envFrom:
+          - configMapRef:
+              name: api-configmap
+        env:
+          - name: MONGODB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_INITDB_ROOT_USERNAME
+                name: mongodb-secret
+          - name: MONGODB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_INITDB_ROOT_PASSWORD
+                name: mongodb-secret
