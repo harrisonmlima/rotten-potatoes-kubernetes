@@ -36,4 +36,4 @@ watch 'kubectl get pods', after every pod goes to status Running, execute kubect
 ### Access both programs
 Before create the cluster k3d, You have to port binding both of them, as shown next:
 k3d cluster create meucluster -p "8080:30000" -p "8080:31000"
-localhost access mongo-express and localhost:8080 acess rotten-potatoes
+localhost access mongo-express and localhost:8080 acess rotten-potatoes 
