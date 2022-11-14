@@ -27,7 +27,7 @@ app.config['MONGODB_PASSWORD'] = os.getenv("MONGODB_PASSWORD", "mongopwd")
 
 db.init_app(app)  
 
-@app.route('/')
+@app.route('/web')
 def index():
 
     filmes = Filme.objects

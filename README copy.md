@@ -14,9 +14,9 @@ Executar kubectl apply -f k8s/db -f k8s/api -f k8s/adb
 watch 'kubectl get pods', quando os pods estiverem no status Running, executar kubectl apply -f k8s/ingress
 
 ### Acesso dos 2 programas
-Na hora de criar o cluster k3d, você tem q dar port binding, como mostrado abaixo:
-k3d cluster create meucluster -p "80:30000"
-Onde o localhost acessa o mongo-express e localhost/web acessa rotten-potatoes 
+Na hora de criar o cluster k3d, você tem q dar 2 port binding, como mostrado abaixo:
+k3d cluster create meucluster -p "80:30000" -p "8080:31000"
+Onde o localhost acessa o mongo-express e localhost:8080 acessa rotten-potatoes 
 
 # Project rotten-potatoes
 
@@ -35,5 +35,5 @@ watch 'kubectl get pods', after every pod goes to status Running, execute kubect
 
 ### Access both programs
 Before create the cluster k3d, You have to port binding both of them, as shown next:
-k3d cluster create meucluster -p "8080:30000"
-localhost access mongo-express and localhost/web acess rotten-potatoes
+k3d cluster create meucluster -p "8080:30000" -p "8080:31000"
+localhost access mongo-express and localhost:8080 acess rotten-potatoes
