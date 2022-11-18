@@ -14,7 +14,6 @@ spec:
       containers:
       - name: web
         image: harrisonlima/rotten-potatoes:{{TAG}}
-        
         ports:
         - containerPort: 5000
         envFrom:
