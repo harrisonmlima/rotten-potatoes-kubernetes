@@ -34,4 +34,5 @@ Execute kubectl apply -f k8s/db -f k8s/api -f k8s/adb
 ### Access both programs
 Before create the cluster k3d, You have to port binding both of them, as shown next:
 k3d cluster create meucluster -p "8080:30000" -p "8080:31000"
+
 localhost access mongo-express and localhost:8080 access rotten-potatoes
