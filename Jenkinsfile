@@ -7,7 +7,10 @@ pipeline
         {
             steps
             {
-                dockerapp = docker.build("harrisonlima/rotten-potatoes:${env.BUILD_ID}", '-f ./src/Dockerfile ./src')
+                script
+                {
+                    dockerapp = docker.build("harrisonlima/rotten-potatoes:${env.BUILD_ID}", '-f ./src/Dockerfile ./src')
+                }
             }
         }
 
