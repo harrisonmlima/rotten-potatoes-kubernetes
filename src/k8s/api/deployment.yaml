@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: harrisonlima/rotten-potatoes:{{TAG}}
+        image: harrisonlima/rotten-potatoes:10
         
         ports:
         - containerPort: 5000
