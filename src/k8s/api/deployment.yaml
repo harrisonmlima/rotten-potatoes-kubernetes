@@ -14,22 +14,7 @@ spec:
       containers:
       - name: web
         image: harrisonlima/rotten-potatoes:v1
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 5000
-          periodSeconds: 10
-          initialDelaySeconds: 3
-          failureThreshold: 3
-          successThreshold: 1
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: 5000
-          periodSeconds: 10
-          initialDelaySeconds: 3
-          failureThreshold: 5
-          successThreshold: 1
+        
         ports:
         - containerPort: 5000
         envFrom:
