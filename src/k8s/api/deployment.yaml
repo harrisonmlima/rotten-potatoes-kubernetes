@@ -8,12 +8,16 @@ spec:
       app: web
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "5000"
       labels:
         app: web
     spec:
       containers:
       - name: web
-        image: harrisonlima/rotten-potatoes:{{TAG}}
+        image: harrisonlima/rotten-potatoes:v1
         ports:
         - containerPort: 5000
         envFrom:
