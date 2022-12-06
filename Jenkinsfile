@@ -42,8 +42,10 @@ pipeline
                     credentialsId: 'jenkins',
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                        sh 'aws describe-instances --region=us-east-1'
                         sh 'sed -i "s/{{TAG}}/$tag_version/g" ./src/k8s/api/deployment.yaml'
                         sh 'kubectl apply -f ./src/k8s -R'
+                        
                     }
                     
             }
